@@ -1,0 +1,266 @@
+/* =====================
+   CSS VARIABLES
+===================== */
+
+:root {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
+
+    --accent-gold: #d4af37;
+
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+
+    --border-color: rgba(255, 255, 255, 0.08);
+
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+
+    --sidebar-width: 260px;
+
+    --border-radius: 16px;
+}
+
+/* =====================
+   RESET
+===================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* =====================
+   LAYOUT
+===================== */
+
+.dashboard-wrapper {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    min-height: 100vh;
+}
+
+/* =====================
+   SIDEBAR
+===================== */
+
+.sidebar {
+    background-color: var(--bg-secondary);
+    padding: 2rem;
+    border-right: 1px solid var(--border-color);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.brand-icon {
+    width: 48px;
+    height: 48px;
+    background-color: var(--accent-gold);
+    color: var(--bg-primary);
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.brand h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.25rem;
+}
+
+.brand p {
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.sidebar-nav .nav-link {
+    color: var(--text-secondary);
+    padding: 1rem;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.sidebar-nav .nav-link:hover,
+.sidebar-nav .nav-link.active {
+    background-color: rgba(212, 175, 55, 0.12);
+    color: var(--accent-gold);
+}
+
+/* =====================
+   MAIN CONTENT
+===================== */
+
+.main-content {
+    padding: 2rem;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.eyebrow {
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.page-header h2 {
+    font-size: 2.5rem;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.search-input {
+    min-width: 260px;
+}
+
+.profile-badge {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--accent-gold);
+    color: var(--bg-primary);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 700;
+}
+
+/* =====================
+   STATS CARDS
+===================== */
+
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+
+    margin-bottom: 2rem;
+}
+
+.stat-card,
+.panel {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+.stat-card p {
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+}
+
+.stat-card h3 {
+    font-size: 2rem;
+    color: var(--accent-gold);
+}
+
+/* =====================
+   MAIN PANELS
+===================== */
+
+.dashboard-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+
+    margin-bottom: 2rem;
+}
+
+.section-heading {
+    margin-bottom: 1.5rem;
+}
+
+.placeholder-box {
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+    min-height: 220px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 1rem;
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+
+@media (max-width: 1024px) {
+
+    .dashboard-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .stats-section,
+    .dashboard-main {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .header-actions {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-input {
+        min-width: 100%;
+    }
+
+    .stats-section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
