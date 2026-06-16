@@ -401,3 +401,53 @@ body {
     background-color: rgba(220, 38, 38, 0.15);
     color: #ef4444;
 }
+/* =====================
+   SAVED REVIEWS
+===================== */
+
+.saved-reviews-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.5rem;
+}
+
+.saved-reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.review-card {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.review-card h4 {
+    margin-bottom: 1rem;
+    color: var(--accent-gold);
+}
+
+.review-card p {
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.review-card strong {
+    color: var(--text-primary);
+}
+
+.card-actions {
+    margin-top: 1rem;
+}
+
+.delete-btn {
+    width: 100%;
+}
+
+.empty-state {
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 2rem;
+}
