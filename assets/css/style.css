@@ -264,3 +264,62 @@ body {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
+/* =====================
+   FORM STYLING
+===================== */
+
+.player-form .form-label,
+.player-form .form-check-label {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.player-form .form-control,
+.player-form .form-select {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 0.8rem 1rem;
+}
+
+.player-form .form-control::placeholder {
+    color: var(--text-secondary);
+}
+
+.player-form .form-control:focus,
+.player-form .form-select:focus {
+    background-color: var(--bg-primary);
+    border-color: var(--accent-gold);
+    color: var(--text-primary);
+    box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.2);
+}
+
+.player-form .form-select option {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.player-form .form-check-input {
+    background-color: var(--bg-primary);
+    border-color: var(--border-color);
+}
+
+.player-form .form-check-input:checked {
+    background-color: var(--accent-gold);
+    border-color: var(--accent-gold);
+}
+
+.submit-btn {
+    background-color: var(--accent-gold);
+    color: var(--bg-primary);
+    font-weight: 700;
+    border: none;
+    padding: 0.9rem 1rem;
+    border-radius: 12px;
+}
+
+.submit-btn:hover {
+    background-color: #f1c94c;
+    color: var(--bg-primary);
+}
