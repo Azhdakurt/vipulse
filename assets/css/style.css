@@ -323,3 +323,67 @@ body {
     background-color: #f1c94c;
     color: var(--bg-primary);
 }
+
+/* =====================
+   RECOMMENDATION PANEL
+===================== */
+
+.recommendation-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.recommendation-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 1rem;
+    background-color: var(--bg-primary);
+    border-radius: 12px;
+}
+
+.recommendation-label {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.status-badge {
+    padding: 0.5rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.status-badge.pending {
+    background-color: rgba(212, 175, 55, 0.15);
+    color: var(--accent-gold);
+}
+
+.status-badge.neutral {
+    background-color: rgba(148, 163, 184, 0.15);
+    color: var(--text-secondary);
+}
+
+.recommendation-alert,
+.rg-warning {
+    background-color: var(--bg-primary);
+    border-radius: 12px;
+    padding: 1.25rem;
+}
+
+.recommendation-alert h4,
+.rg-warning span {
+    display: block;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.recommendation-alert p,
+.rg-warning p {
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
