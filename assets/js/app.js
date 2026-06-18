@@ -10,6 +10,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const segmentStatus = document.getElementById("segment-status");
     const recommendationText = document.getElementById("recommendation-text");
     const rgStatus = document.getElementById("rg-status");
+    // Dashboard summary card elements
+const activeVipsCount = document.getElementById("active-vips-count");
+const bonusReviewsCount = document.getElementById("bonus-reviews-count");
+const churnAlertsCount = document.getElementById("churn-alerts-count");
+const rgReviewsCount = document.getElementById("rg-reviews-count");
 
     // Form fields used for inline validation
     const playerIdInput = document.getElementById("player-id");
@@ -28,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Show any previously saved reviews when the page loads
     renderSavedReviews();
+    updateDashboardCards();
 
     // Runs when the user submits the player review form
     playerForm.addEventListener("submit", (event) => {
@@ -177,6 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Re-render the saved review cards on the page
         renderSavedReviews();
+        updateDashboardCards();
     });
 
     // Handles deleting one saved review card
@@ -195,6 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Refresh the displayed cards
         renderSavedReviews();
+        updateDashboardCards();
     });
 
     // Handles clearing all saved reviews
@@ -206,6 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Refresh the saved reviews section
         renderSavedReviews();
+        updateDashboardCards();
     });
 
     // Updates the text and styling class of a status badge
@@ -253,6 +262,33 @@ document.addEventListener("DOMContentLoaded", () => {
             savedReviewsContainer.appendChild(card);
         });
     }
+    // Updates the dashboard summary cards using saved review data
+function updateDashboardCards() {
+
+    // Total saved player reviews
+    activeVipsCount.textContent = savedReviews.length;
+
+    // Players eligible for bonus review
+    const bonusCount = savedReviews.filter(
+        (review) => review.bonusStatus === "Eligible for review"
+    ).length;
+
+    bonusReviewsCount.textContent = bonusCount;
+
+    // Players with high churn risk
+    const churnCount = savedReviews.filter(
+        (review) => review.churnStatus === "High risk"
+    ).length;
+
+    churnAlertsCount.textContent = churnCount;
+
+    // Players requiring responsible gambling review
+    const rgCount = savedReviews.filter(
+        (review) => review.segmentStatus === "RG Review"
+    ).length;
+
+    rgReviewsCount.textContent = rgCount;
+}
 
     // Displays Bootstrap validation styling
     function showValidationError(element) {
