@@ -86,47 +86,53 @@
             <h3>Player Review Form</h3>
           </div>
 
-          <form id="player-review-form" class="player-form" novalidate>
+      <form id="player-review-form" class="player-form" novalidate>
   <div class="mb-3">
     <label for="player-id" class="form-label">Player ID</label>
-    <input type="text" id="player-id" class="form-control" placeholder="e.g. player_247" required>
+    <input type="text" id="player-id" class="form-control" placeholder="e.g. player_247">
+    <div class="invalid-feedback">Player ID is required.</div>
   </div>
 
   <div class="mb-3">
     <label for="vip-tier" class="form-label">VIP Tier</label>
-    <select id="vip-tier" class="form-select" required>
+    <select id="vip-tier" class="form-select">
       <option value="">Select VIP tier</option>
       <option value="silver">Silver</option>
       <option value="gold">Gold</option>
       <option value="platinum">Platinum</option>
       <option value="diamond">Diamond</option>
     </select>
+    <div class="invalid-feedback">Please select a VIP tier.</div>
   </div>
 
   <div class="mb-3">
     <label for="total-deposit" class="form-label">Total Deposit (£)</label>
-    <input type="number" id="total-deposit" class="form-control" placeholder="e.g. 4500" min="0" required>
+    <input type="number" id="total-deposit" class="form-control" placeholder="e.g. 4500" min="0">
+    <div class="invalid-feedback">Total deposit must be 0 or above.</div>
   </div>
 
   <div class="mb-3">
     <label for="wagering-completion" class="form-label">Wagering Completion (%)</label>
-    <input type="number" id="wagering-completion" class="form-control" placeholder="0 - 100" min="0" max="100" required>
+    <input type="number" id="wagering-completion" class="form-control" placeholder="0 - 100" min="0" max="100">
+    <div class="invalid-feedback">Wagering completion must be between 0 and 100.</div>
   </div>
 
   <div class="mb-3">
     <label for="last-active-days" class="form-label">Days Since Last Activity</label>
-    <input type="number" id="last-active-days" class="form-control" placeholder="e.g. 14" min="0" required>
+    <input type="number" id="last-active-days" class="form-control" placeholder="e.g. 14" min="0">
+    <div class="invalid-feedback">Days since last activity must be 0 or above.</div>
   </div>
 
   <div class="mb-3">
     <label for="activity-trend" class="form-label">Activity Trend</label>
-    <select id="activity-trend" class="form-select" required>
+    <select id="activity-trend" class="form-select">
       <option value="">Select activity trend</option>
       <option value="increasing">Increasing</option>
       <option value="stable">Stable</option>
       <option value="decreasing">Decreasing</option>
       <option value="inactive">Inactive</option>
     </select>
+    <div class="invalid-feedback">Please select an activity trend.</div>
   </div>
 
   <div class="form-check mb-4">

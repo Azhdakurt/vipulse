@@ -11,6 +11,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const recommendationText = document.getElementById("recommendation-text");
     const rgStatus = document.getElementById("rg-status");
 
+    // Form fields used for inline validation
+    const playerIdInput = document.getElementById("player-id");
+    const vipTierInput = document.getElementById("vip-tier");
+    const totalDepositInput = document.getElementById("total-deposit");
+    const wageringInput = document.getElementById("wagering-completion");
+    const lastActiveInput = document.getElementById("last-active-days");
+    const activityTrendInput = document.getElementById("activity-trend");
+
     // Saved reviews section elements
     const savedReviewsContainer = document.getElementById("saved-reviews-container");
     const clearReviewsButton = document.getElementById("clear-reviews-btn");
@@ -28,23 +36,69 @@ document.addEventListener("DOMContentLoaded", () => {
         // Collect user input values from the form
         const playerId = document.getElementById("player-id").value.trim();
         const vipTier = document.getElementById("vip-tier").value;
-        const totalDeposit = Number(document.getElementById("total-deposit").value);
-        const wageringCompletion = Number(document.getElementById("wagering-completion").value);
-        const lastActiveDays = Number(document.getElementById("last-active-days").value);
+
+        const totalDepositValue = document.getElementById("total-deposit").value;
+        const totalDeposit = Number(totalDepositValue);
+
+        const wageringValue = document.getElementById("wagering-completion").value;
+        const wageringCompletion = Number(wageringValue);
+
+        const lastActiveValue = document.getElementById("last-active-days").value;
+        const lastActiveDays = Number(lastActiveValue);
+
         const activityTrend = document.getElementById("activity-trend").value;
         const rgRisk = document.getElementById("rg-risk").checked;
 
-        // Basic defensive validation to prevent invalid reviews
+        // Remove previous validation states before running new checks
+        clearValidation();
+
+        let isValid = true;
+
+        // Player ID validation
+        if (!playerId) {
+            showValidationError(playerIdInput);
+            isValid = false;
+        }
+
+        // VIP tier validation
+        if (!vipTier) {
+            showValidationError(vipTierInput);
+            isValid = false;
+        }
+
+        // Total deposit validation
+        if (totalDepositValue === "" || totalDeposit < 0) {
+            showValidationError(totalDepositInput);
+            isValid = false;
+        }
+
+        // Wagering validation
         if (
-            !playerId ||
-            !vipTier ||
-            !activityTrend ||
-            totalDeposit < 0 ||
+            wageringValue === "" ||
             wageringCompletion < 0 ||
-            wageringCompletion > 100 ||
-            lastActiveDays < 0
+            wageringCompletion > 100
         ) {
-            recommendationText.textContent = "Please complete all required fields with valid values before running the VIP review.";
+            showValidationError(wageringInput);
+            isValid = false;
+        }
+
+        // Last active days validation
+        if (lastActiveValue === "" || lastActiveDays < 0) {
+            showValidationError(lastActiveInput);
+            isValid = false;
+        }
+
+        // Activity trend validation
+        if (!activityTrend) {
+            showValidationError(activityTrendInput);
+            isValid = false;
+        }
+
+        // Stop form submission if validation fails
+        if (!isValid) {
+            recommendationText.textContent =
+                "Please correct the highlighted fields before running the VIP review.";
+
             return;
         }
 
@@ -197,6 +251,20 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
 
             savedReviewsContainer.appendChild(card);
+        });
+    }
+
+    // Displays Bootstrap validation styling
+    function showValidationError(element) {
+        element.classList.add("is-invalid");
+    }
+
+    // Removes validation styling from all form fields
+    function clearValidation() {
+        const invalidFields = document.querySelectorAll(".is-invalid");
+
+        invalidFields.forEach((field) => {
+            field.classList.remove("is-invalid");
         });
     }
 });
