@@ -204,10 +204,41 @@
           <h3>Saved Player Reviews</h3>
         </div>
 
-        <div class="saved-reviews-header">
-  <button id="clear-reviews-btn" class="btn btn-outline-light">
-    Clear All
-  </button>
+  <div class="saved-reviews-header">
+
+    <div class="review-filters">
+
+        <input
+            type="search"
+            id="search-player"
+            class="form-control"
+            placeholder="Search Player ID">
+
+        <select id="filter-tier" class="form-select">
+            <option value="">All VIP Tiers</option>
+            <option value="silver">Silver</option>
+            <option value="gold">Gold</option>
+            <option value="platinum">Platinum</option>
+            <option value="diamond">Diamond</option>
+        </select>
+
+        <select id="filter-churn" class="form-select">
+            <option value="">All Churn Risks</option>
+            <option value="High risk">High Risk</option>
+            <option value="Medium risk">Medium Risk</option>
+            <option value="Low risk">Low Risk</option>
+        </select>
+
+        <button id="clear-filters-btn" class="btn btn-outline-secondary">
+            Clear Filters
+        </button>
+
+    </div>
+
+    <button id="clear-reviews-btn" class="btn btn-outline-light">
+        Clear All
+    </button>
+
 </div>
 
 <div id="saved-reviews-container" class="saved-reviews-grid">
