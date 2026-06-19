@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const recommendationText = document.getElementById("recommendation-text");
     const rgStatus = document.getElementById("rg-status");
 
+    // Success message element
+const successMessage = document.getElementById("success-message");
+
     // Dashboard summary card elements
     const activeVipsCount = document.getElementById("active-vips-count");
     const bonusReviewsCount = document.getElementById("bonus-reviews-count");
@@ -111,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!isValid) {
             recommendationText.textContent =
                 "Please correct the highlighted fields before running the VIP review.";
-
+        successMessage.classList.remove("show");
             return;
         }
 
@@ -191,6 +194,20 @@ document.addEventListener("DOMContentLoaded", () => {
         // Re-render the saved review cards on the page
         renderSavedReviews();
         updateDashboardCards();
+
+        // Show success message after saving the review
+successMessage.classList.add("show");
+
+// Hide the message automatically after 3 seconds
+setTimeout(() => {
+    successMessage.classList.remove("show");
+}, 3000);
+
+// Reset the form for the next review
+playerForm.reset();
+
+// Remove any previous validation styling
+clearValidation();
     });
 
     // Handles deleting one saved review card
