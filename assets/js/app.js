@@ -327,6 +327,9 @@ clearValidation();
 
             card.innerHTML = `
                 <h4>${review.playerId}</h4>
+                <div class="behaviour-tags">
+    ${getBehaviourTags(review)}
+</div>
                 <p><strong>VIP Tier:</strong> ${review.vipTier}</p>
                 <p><strong>Deposit:</strong> £${review.totalDeposit}</p>
                 <p><strong>Wagering:</strong> ${review.wageringCompletion}%</p>
@@ -372,6 +375,45 @@ clearValidation();
 
         rgReviewsCount.textContent = rgCount;
     }
+
+    // Creates visual behaviour tags for each saved player review card
+function getBehaviourTags(review) {
+    const tags = [];
+
+    if (review.segmentStatus === "RG Review") {
+        tags.push(`<span class="behaviour-tag danger">RG Review</span>`);
+    }
+
+    if (review.segmentStatus === "High Value") {
+        tags.push(`<span class="behaviour-tag success">High Value</span>`);
+    }
+
+    if (review.segmentStatus === "Dormant") {
+        tags.push(`<span class="behaviour-tag danger">Dormant</span>`);
+    }
+
+    if (review.segmentStatus === "Retention Risk") {
+        tags.push(`<span class="behaviour-tag warning">Retention Risk</span>`);
+    }
+
+    if (review.bonusStatus === "Eligible for review") {
+        tags.push(`<span class="behaviour-tag success">Bonus Eligible</span>`);
+    }
+
+    if (review.bonusStatus === "Recent bonus awarded") {
+        tags.push(`<span class="behaviour-tag warning">Recent Bonus</span>`);
+    }
+
+    if (review.churnStatus === "High risk") {
+        tags.push(`<span class="behaviour-tag danger">High Churn Risk</span>`);
+    }
+
+    if (tags.length === 0) {
+        tags.push(`<span class="behaviour-tag neutral">Standard Review</span>`);
+    }
+
+    return tags.join("");
+}
 
     // Displays Bootstrap validation styling
     function showValidationError(element) {
