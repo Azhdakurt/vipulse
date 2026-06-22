@@ -27,6 +27,7 @@ const successMessage = document.getElementById("success-message");
     const wageringInput = document.getElementById("wagering-completion");
     const lastActiveInput = document.getElementById("last-active-days");
     const activityTrendInput = document.getElementById("activity-trend");
+    const lastBonusInput = document.getElementById("last-bonus-days");
 
     // Saved reviews section elements
     const savedReviewsContainer = document.getElementById("saved-reviews-container");
@@ -61,6 +62,9 @@ const successMessage = document.getElementById("success-message");
 
         const lastActiveValue = document.getElementById("last-active-days").value;
         const lastActiveDays = Number(lastActiveValue);
+
+        const lastBonusValue = document.getElementById("last-bonus-days").value;
+        const lastBonusDays = Number(lastBonusValue);
 
         const activityTrend = document.getElementById("activity-trend").value;
         const rgRisk = document.getElementById("rg-risk").checked;
@@ -104,6 +108,12 @@ const successMessage = document.getElementById("success-message");
             isValid = false;
         }
 
+        // Last bonus days validation
+       if (lastBonusValue === "" || lastBonusDays < 0) {
+           showValidationError(lastBonusInput);
+           isValid = false;
+  }
+
         // Activity trend validation
         if (!activityTrend) {
             showValidationError(activityTrendInput);
@@ -130,11 +140,15 @@ const successMessage = document.getElementById("success-message");
         } else {
 
             // Bonus eligibility logic based on wagering completion percentage
-            if (wageringCompletion < 70) {
-                updateStatus(bonusStatus, "Not eligible yet", "warning");
-            } else {
-                updateStatus(bonusStatus, "Eligible for review", "success");
-            }
+            if (lastBonusDays <= 7) {
+              updateStatus(bonusStatus, "Recent bonus awarded", "warning");
+
+           } else if (wageringCompletion < 70) {
+              updateStatus(bonusStatus, "Not eligible yet", "warning");
+
+           } else {
+              updateStatus(bonusStatus, "Eligible for review", "success");
+           }
 
             // Churn risk logic based on inactivity and activity trend
             if (lastActiveDays >= 14 || activityTrend === "inactive") {
@@ -157,7 +171,10 @@ const successMessage = document.getElementById("success-message");
             }
 
             // Professional internal recommendation text based on player activity
-            if (lastActiveDays >= 14 || activityTrend === "inactive") {
+            if (lastBonusDays <= 7) {
+               recommendationText.textContent ="Player received a recent bonus. Review previous engagement activity before considering additional rewards.";
+
+            } else if (lastActiveDays >= 14 || activityTrend === "inactive") {
                 recommendationText.textContent = "Player shows inactivity risk. Recommend a retention follow-up before considering further bonus activity.";
             } else if (activityTrend === "decreasing") {
                 recommendationText.textContent = "Player activity is decreasing. Recommend personalised engagement and review recent activity before offering rewards.";

@@ -124,6 +124,23 @@
   </div>
 
   <div class="mb-3">
+    <label for="last-bonus-days" class="form-label">
+        Days Since Last Bonus
+    </label>
+
+    <input
+        type="number"
+        id="last-bonus-days"
+        class="form-control"
+        placeholder="e.g. 30"
+        min="0">
+
+    <div class="invalid-feedback">
+        Days since last bonus must be 0 or above.
+    </div>
+</div>
+
+  <div class="mb-3">
     <label for="activity-trend" class="form-label">Activity Trend</label>
     <select id="activity-trend" class="form-select">
       <option value="">Select activity trend</option>
