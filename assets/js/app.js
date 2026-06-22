@@ -1,6 +1,9 @@
 // Runs the JavaScript only after the full HTML page has loaded
 document.addEventListener("DOMContentLoaded", () => {
 
+    // Detect current page
+    const currentPage = window.location.pathname;
+
     // Main form element used to collect player review data
     const playerForm = document.getElementById("player-review-form");
 
@@ -38,6 +41,11 @@ const successMessage = document.getElementById("success-message");
     const filterTierInput = document.getElementById("filter-tier");
     const filterChurnInput = document.getElementById("filter-churn");
     const clearFiltersButton = document.getElementById("clear-filters-btn");
+
+    // Load player profile when the user opens the profiles page
+if (currentPage.includes("profiles.html")) {
+    loadPlayerProfile();
+}
 
     // Load existing saved reviews from localStorage, or start with an empty array
     let savedReviews = JSON.parse(localStorage.getItem("vipulseReviews")) || [];
@@ -413,6 +421,93 @@ function getBehaviourTags(review) {
     }
 
     return tags.join("");
+}
+
+// Loads player profiles using saved review data
+function loadPlayerProfile() {
+
+    const params = new URLSearchParams(window.location.search);
+    const playerId = params.get("player");
+
+    const profileTitle = document.getElementById("profile-title");
+    const profileContent = document.getElementById("profile-content");
+
+    const savedReviews =
+        JSON.parse(localStorage.getItem("vipulseReviews")) || [];
+
+    // Show all players when no player ID is provided
+    if (!playerId) {
+
+        profileTitle.textContent = "Player Profiles";
+
+        if (savedReviews.length === 0) {
+            profileContent.innerHTML = `
+                <p>No saved player profiles found.</p>
+            `;
+            return;
+        }
+
+        profileContent.innerHTML = `
+            <div class="profile-grid">
+                ${savedReviews.map((review) => `
+                    <article class="profile-card">
+
+                        <h3>${review.playerId}</h3>
+
+                        <p><strong>VIP Tier:</strong> ${review.vipTier}</p>
+
+                        <p><strong>Churn Risk:</strong> ${review.churnStatus}</p>
+
+                        <p><strong>Bonus Status:</strong> ${review.bonusStatus}</p>
+
+                        <a
+                            href="profiles.html?player=${review.playerId}"
+                            class="btn submit-btn view-profile-btn">
+                            View Profile
+                        </a>
+
+                    </article>
+                `).join("")}
+            </div>
+        `;
+
+        return;
+    }
+
+    // Find one player using the player ID from the URL
+    const player = savedReviews.find(
+        (review) => review.playerId === playerId
+    );
+
+    if (!player) {
+        profileTitle.textContent = "Player not found";
+
+        profileContent.innerHTML = `
+            <p>Search for a player from the dashboard.</p>
+        `;
+
+        return;
+    }
+
+    profileTitle.textContent = `Player ${player.playerId}`;
+
+    profileContent.innerHTML = `
+        <div class="profile-card">
+
+            <p><strong>VIP Tier:</strong> ${player.vipTier}</p>
+
+            <p><strong>Total Deposit:</strong> £${player.totalDeposit}</p>
+
+            <p><strong>Wagering Completion:</strong> ${player.wageringCompletion}%</p>
+
+            <p><strong>Activity Trend:</strong> ${player.activityTrend}</p>
+
+            <p><strong>Churn Risk:</strong> ${player.churnStatus}</p>
+
+            <p><strong>Bonus Status:</strong> ${player.bonusStatus}</p>
+
+        </div>
+    `;
 }
 
     // Displays Bootstrap validation styling
