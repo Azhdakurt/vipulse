@@ -42,6 +42,10 @@ const successMessage = document.getElementById("success-message");
     const filterChurnInput = document.getElementById("filter-churn");
     const clearFiltersButton = document.getElementById("clear-filters-btn");
 
+    // Global search elements
+const globalSearchForm = document.getElementById("global-search-form");
+const globalPlayerSearch = document.getElementById("global-player-search");
+
     // Load player profile when the user opens the profiles page
 if (currentPage.includes("profiles.html")) {
     loadPlayerProfile();
@@ -284,6 +288,33 @@ clearValidation();
         renderSavedReviews();
     });
 
+    // Redirects users to a player profile using the global search bar
+if (globalSearchForm && globalPlayerSearch) {
+
+    globalSearchForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const playerId = globalPlayerSearch.value.trim();
+
+        if (!playerId) {
+            return;
+        }
+
+        const savedReviews =
+            JSON.parse(localStorage.getItem("vipulseReviews")) || [];
+
+        const playerExists = savedReviews.some(
+            (review) => review.playerId === playerId
+        );
+
+        if (playerExists) {
+            window.location.href =
+                `pages/profiles.html?player=${playerId}`;
+        } else {
+            alert("Player not found.");
+        }
+    });
+}
     // Updates the text and styling class of a status badge
     function updateStatus(element, text, statusClass) {
         element.textContent = text;
