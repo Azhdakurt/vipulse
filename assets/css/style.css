@@ -612,3 +612,18 @@ body {
 .profile-card p:last-of-type {
     margin-bottom: 1.5rem;
 }
+
+/* =====================
+   GLOBAL SEARCH ERROR
+===================== */
+
+.search-error-message {
+    display: none;
+    margin-top: 0.5rem;
+    color: #ef4444;
+    font-size: 0.85rem;
+}
+
+.search-error-message.show {
+    display: block;
+}

@@ -45,6 +45,7 @@ const successMessage = document.getElementById("success-message");
     // Global search elements
 const globalSearchForm = document.getElementById("global-search-form");
 const globalPlayerSearch = document.getElementById("global-player-search");
+const searchErrorMessage = document.getElementById("search-error-message");
 
     // Load player profile when the user opens the profiles page
 if (currentPage.includes("profiles.html")) {
@@ -288,7 +289,7 @@ clearValidation();
         renderSavedReviews();
     });
 
-    // Redirects users to a player profile using the global search bar
+ // Redirects users to a player profile using the global search bar
 if (globalSearchForm && globalPlayerSearch) {
 
     globalSearchForm.addEventListener("submit", (event) => {
@@ -308,10 +309,19 @@ if (globalSearchForm && globalPlayerSearch) {
         );
 
         if (playerExists) {
+
+            searchErrorMessage.classList.remove("show");
+
             window.location.href =
                 `pages/profiles.html?player=${playerId}`;
+
         } else {
-            alert("Player not found.");
+
+            searchErrorMessage.classList.add("show");
+
+            setTimeout(() => {
+                searchErrorMessage.classList.remove("show");
+            }, 3000);
         }
     });
 }
