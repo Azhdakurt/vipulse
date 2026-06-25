@@ -52,6 +52,11 @@ if (currentPage.includes("profiles.html")) {
     loadPlayerProfile();
 }
 
+// Load analytics data when the user opens the analytics page
+if (currentPage.includes("analytics.html")) {
+    loadAnalyticsPage();
+}
+
     // Load existing saved reviews from localStorage, or start with an empty array
     let savedReviews = JSON.parse(localStorage.getItem("vipulseReviews")) || [];
 
@@ -549,6 +554,90 @@ function loadPlayerProfile() {
 
         </div>
     `;
+}
+
+// Loads analytics data using saved review information
+function loadAnalyticsPage() {
+    const savedReviews =
+        JSON.parse(localStorage.getItem("vipulseReviews")) || [];
+
+    const totalPlayers = document.getElementById("analytics-total-players");
+    const bonusEligible = document.getElementById("analytics-bonus");
+    const highChurn = document.getElementById("analytics-churn");
+    const rgReviews = document.getElementById("analytics-rg");
+    const tierBreakdown = document.getElementById("tier-breakdown");
+    const behaviourBreakdown = document.getElementById("behaviour-breakdown");
+
+    totalPlayers.textContent = savedReviews.length;
+
+    bonusEligible.textContent = savedReviews.filter(
+        (review) => review.bonusStatus === "Eligible for review"
+    ).length;
+
+    highChurn.textContent = savedReviews.filter(
+        (review) => review.churnStatus === "High risk"
+    ).length;
+
+    rgReviews.textContent = savedReviews.filter(
+        (review) => review.segmentStatus === "RG Review"
+    ).length;
+
+    const tierCounts = countBy(savedReviews, "vipTier");
+    const behaviourCounts = countBy(savedReviews, "segmentStatus");
+
+    tierBreakdown.innerHTML = createBreakdownRows(tierCounts, [
+    "diamond",
+    "platinum",
+    "gold",
+    "silver"
+]);
+
+behaviourBreakdown.innerHTML = createBreakdownRows(behaviourCounts, [
+    "RG Review",
+    "Dormant",
+    "Retention Risk",
+    "High Value",
+    "Standard Review"
+]);
+}
+
+// Counts saved reviews by a selected property
+function countBy(reviews, key) {
+    return reviews.reduce((counts, review) => {
+        const value = review[key] || "Unknown";
+        counts[value] = (counts[value] || 0) + 1;
+        return counts;
+    }, {});
+}
+
+// Creates rows for analytics breakdown sections
+function createBreakdownRows(data, preferredOrder = []) {
+    const entries = Object.entries(data);
+
+    if (entries.length === 0) {
+        return `<p class="empty-state">No analytics data available yet.</p>`;
+    }
+
+    const sortedEntries = preferredOrder.length > 0
+        ? preferredOrder
+            .filter((label) => data[label])
+            .map((label) => [label, data[label]])
+        : entries;
+
+    return sortedEntries.map(([label, count]) => `
+        <div class="breakdown-row">
+            <span>${formatLabel(label)}</span>
+            <strong>${count}</strong>
+        </div>
+    `).join("");
+}
+
+// Formats labels for display in analytics sections
+function formatLabel(label) {
+    return label
+        .split(" ")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
 }
 
     // Displays Bootstrap validation styling
