@@ -735,3 +735,95 @@ body {
     color: var(--text-secondary);
     font-size: 0.85rem;
 }
+
+/* =====================
+   PROFILE ACTION BUTTONS
+===================== */
+
+.customer-preview-btn {
+    display: block;
+    width: 100%;
+    margin-top: 0.75rem;
+    border-radius: 12px;
+    padding: 0.8rem 1rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid var(--accent-gold);
+    color: var(--accent-gold);
+    background-color: transparent;
+}
+
+.customer-preview-btn:hover {
+    background-color: rgba(212, 175, 55, 0.12);
+    color: var(--accent-gold);
+}
+
+/* =====================
+   CUSTOMER PREVIEW
+===================== */
+
+.customer-preview-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.customer-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 2rem;
+}
+
+.customer-card h2 {
+    color: var(--accent-gold);
+    margin-bottom: 0.5rem;
+}
+
+.customer-card h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.customer-card p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.customer-divider {
+    margin: 2rem 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.customer-status {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.6rem 1rem;
+    border-radius: 999px;
+    background-color: rgba(255, 193, 7, 0.15);
+    color: var(--accent-gold);
+    font-weight: 600;
+}
+
+.customer-help {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.customer-help h4 {
+    margin-bottom: 0.5rem;
+}
+
+.customer-help p {
+    margin: 0;
+}
+
+.customer-intro {
+    margin-top: 1rem;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+}

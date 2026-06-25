@@ -57,6 +57,11 @@ if (currentPage.includes("analytics.html")) {
     loadAnalyticsPage();
 }
 
+// Load customer preview when the user opens the customer preview page
+if (currentPage.includes("customer-preview.html")) {
+    loadCustomerPreview();
+}
+
     // Load existing saved reviews from localStorage, or start with an empty array
     let savedReviews = JSON.parse(localStorage.getItem("vipulseReviews")) || [];
 
@@ -506,11 +511,21 @@ function loadPlayerProfile() {
 
                         <p><strong>Bonus Status:</strong> ${review.bonusStatus}</p>
 
-                        <a
-                            href="profiles.html?player=${review.playerId}"
-                            class="btn submit-btn view-profile-btn">
-                            View Profile
-                        </a>
+                       <div class="card-actions">
+
+    <a
+        href="profiles.html?player=${review.playerId}"
+        class="btn submit-btn view-profile-btn">
+        View Profile
+    </a>
+
+    <a
+        href="customer-preview.html?player=${review.playerId}"
+        class="btn btn-outline-light customer-preview-btn">
+        Customer Preview
+    </a>
+
+</div>
 
                     </article>
                 `).join("")}
@@ -599,6 +614,118 @@ behaviourBreakdown.innerHTML = createBreakdownRows(behaviourCounts, [
     "High Value",
     "Standard Review"
 ]);
+}
+
+// Loads the customer preview for the selected player
+function loadCustomerPreview() {
+
+    const params = new URLSearchParams(window.location.search);
+    const playerId = params.get("player");
+
+    const previewContainer = document.getElementById(
+        "customer-preview-content"
+    );
+
+    const savedReviews =
+        JSON.parse(localStorage.getItem("vipulseReviews")) || [];
+
+    const player = savedReviews.find(
+        (review) => review.playerId === playerId
+    );
+
+    if (!player) {
+
+        previewContainer.innerHTML = `
+            <h2>Player not found</h2>
+            <p>Please return to the Profiles page and select a player.</p>
+        `;
+
+        return;
+    }
+const customerMessage = getCustomerMessage(player);
+const welcomeMessage = getWelcomeMessage(player.vipTier);
+
+previewContainer.innerHTML = `
+    <article class="customer-card">
+
+        <h2>Welcome back, Player ${player.playerId}</h2>
+
+        <span class="customer-status">
+            ${formatLabel(player.vipTier)} VIP Member
+        </span>
+
+        <p class="customer-intro">
+    ${welcomeMessage}
+</p>
+
+        <div class="customer-divider"></div>
+
+        <h3>Reward Status</h3>
+
+        <p>
+            ${customerMessage.status}
+        </p>
+
+        <div class="customer-divider"></div>
+
+        <h3>Message from your VIP Team</h3>
+
+        <p>
+            ${customerMessage.message}
+        </p>
+
+        <div class="customer-help">
+
+            <h4>Need assistance?</h4>
+
+            <p>
+                Please contact your VIP Manager for further support.
+            </p>
+
+        </div>
+
+    </article>
+`;
+}
+
+// Creates customer-friendly messaging based on saved review status
+function getCustomerMessage(player) {
+
+    if (player.bonusStatus === "Eligible for review") {
+        return {
+            status: "Your account is currently eligible for a personalised VIP review.",
+            message: "Thank you for your continued loyalty. Our VIP team regularly reviews player activity to provide tailored rewards and exclusive promotions."
+        };
+    }
+
+    if (player.bonusStatus === "Recent bonus awarded") {
+        return {
+            status: "You have recently received a VIP reward.",
+            message: "Thank you for enjoying your recent reward. Keep engaging with your account to unlock future personalised offers."
+        };
+    }
+
+    if (player.bonusStatus === "Do not offer bonus") {
+        return {
+            status: "Your account is currently under review.",
+            message: "Our team is reviewing your account activity. Please contact your VIP Manager if you need further support."
+        };
+    }
+
+    return {
+        status: "You are not currently eligible for a personalised reward.",
+        message: "Our VIP team regularly reviews player activity. Keep enjoying your experience and future rewards may become available."
+    };
+}
+
+// Creates a welcome message based on VIP tier
+function getWelcomeMessage(vipTier) {
+
+    if (vipTier === "diamond" || vipTier === "platinum") {
+        return "Thank you for being one of our most valued VIP members.";
+    }
+
+    return "Thank you for being part of our VIP programme.";
 }
 
 // Counts saved reviews by a selected property
