@@ -666,11 +666,13 @@ previewContainer.innerHTML = `
 
         <div class="customer-divider"></div>
 
-        <h3>Reward Status</h3>
+       <h3>Your Reward Status</h3>
 
-        <p>
-            ${customerMessage.status}
-        </p>
+<div class="customer-highlight">
+    <p>
+        ${customerMessage.status}
+    </p>
+</div>
 
         <div class="customer-divider"></div>
 

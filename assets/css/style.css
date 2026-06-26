@@ -848,6 +848,20 @@ body {
     line-height: 1.6;
 }
 
+.customer-highlight {
+    margin-top: 1rem;
+    padding: 1rem 1.25rem;
+    background-color: rgba(212, 175, 55, 0.08);
+    border-left: 4px solid var(--accent-gold);
+    border-radius: 8px;
+}
+
+.customer-highlight p {
+    margin: 0;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
 /* =====================
    EMPTY STATES
 ===================== */
