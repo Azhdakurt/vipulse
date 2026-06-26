@@ -1,297 +1,335 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="VIPulse is an interactive VIP retention and bonus review dashboard prototype for iGaming teams.">
-  <title>VIPulse | Dashboard</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="VIPulse is an interactive VIP retention and bonus review dashboard prototype for iGaming teams."
+    />
+    <title>VIPulse | Dashboard</title>
 
-  <!-- Google Font: Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
- <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png" />
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="assets/css/style.css">
-</head>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
 
-<body>
-  <div class="dashboard-wrapper">
-
-    <!-- Sidebar navigation -->
-    <aside class="sidebar">
-      <div class="brand">
-        <span class="brand-icon">V</span>
-        <div>
-          <h1>VIPulse</h1>
-          <p>Retention Dashboard</p>
+  <body>
+    <div class="dashboard-wrapper">
+      <!-- Sidebar navigation -->
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="brand-icon">V</span>
+          <div>
+            <h1>VIPulse</h1>
+            <p>Retention Dashboard</p>
+          </div>
         </div>
+
+        <nav class="sidebar-nav" aria-label="Main navigation">
+          <a href="index.html" class="nav-link active">Dashboard</a>
+          <a href="pages/profiles.html" class="nav-link">Profiles</a>
+          <a href="pages/analytics.html" class="nav-link">Analytics</a>
+        </nav>
+      </aside>
+
+      <!-- Main dashboard content -->
+      <div class="main-content">
+        <!-- Page header -->
+        <header class="page-header">
+          <div>
+            <p class="eyebrow">Internal staff tool</p>
+            <h2>VIP Bonus & Retention Review</h2>
+          </div>
+
+          <div class="header-actions">
+            <form id="global-search-form">
+              <input
+                type="search"
+                id="global-player-search"
+                class="form-control search-input"
+                placeholder="Search player ID"
+              />
+
+              <div id="search-error-message" class="search-error-message">
+                Player not found.
+              </div>
+            </form>
+
+            <div class="profile-badge">AK</div>
+          </div>
+        </header>
+
+        <!-- Statistics summary cards -->
+        <section class="stats-section" aria-label="Dashboard summary">
+          <article class="stat-card">
+            <p>Active VIPs</p>
+            <h3 id="active-vips-count">0</h3>
+          </article>
+
+          <article class="stat-card">
+            <p>Bonus Reviews</p>
+            <h3 id="bonus-reviews-count">0</h3>
+          </article>
+
+          <article class="stat-card">
+            <p>Churn Alerts</p>
+            <h3 id="churn-alerts-count">0</h3>
+          </article>
+
+          <article class="stat-card">
+            <p>RG Reviews</p>
+            <h3 id="rg-reviews-count">0</h3>
+          </article>
+        </section>
+
+        <!-- Review form and recommendation area -->
+        <main class="dashboard-main">
+          <section class="panel">
+            <div class="section-heading">
+              <p class="eyebrow">Manual input</p>
+              <h3>Player Review Form</h3>
+            </div>
+
+            <form id="player-review-form" class="player-form" novalidate>
+              <div class="mb-3">
+                <label for="player-id" class="form-label">Player ID</label>
+                <input
+                  type="text"
+                  id="player-id"
+                  class="form-control"
+                  placeholder="e.g. player_247"
+                />
+                <div class="invalid-feedback">Player ID is required.</div>
+              </div>
+
+              <div class="mb-3">
+                <label for="vip-tier" class="form-label">VIP Tier</label>
+                <select id="vip-tier" class="form-select">
+                  <option value="">Select VIP tier</option>
+                  <option value="silver">Silver</option>
+                  <option value="gold">Gold</option>
+                  <option value="platinum">Platinum</option>
+                  <option value="diamond">Diamond</option>
+                </select>
+                <div class="invalid-feedback">Please select a VIP tier.</div>
+              </div>
+
+              <div class="mb-3">
+                <label for="total-deposit" class="form-label"
+                  >Total Deposit (£)</label
+                >
+                <input
+                  type="number"
+                  id="total-deposit"
+                  class="form-control"
+                  placeholder="e.g. 4500"
+                  min="0"
+                />
+                <div class="invalid-feedback">
+                  Total deposit must be 0 or above.
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="wagering-completion" class="form-label"
+                  >Wagering Completion (%)</label
+                >
+                <input
+                  type="number"
+                  id="wagering-completion"
+                  class="form-control"
+                  placeholder="0 - 100"
+                  min="0"
+                  max="100"
+                />
+                <div class="invalid-feedback">
+                  Wagering completion must be between 0 and 100.
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="last-active-days" class="form-label"
+                  >Days Since Last Activity</label
+                >
+                <input
+                  type="number"
+                  id="last-active-days"
+                  class="form-control"
+                  placeholder="e.g. 14"
+                  min="0"
+                />
+                <div class="invalid-feedback">
+                  Days since last activity must be 0 or above.
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="last-bonus-days" class="form-label">
+                  Days Since Last Bonus
+                </label>
+
+                <input
+                  type="number"
+                  id="last-bonus-days"
+                  class="form-control"
+                  placeholder="e.g. 30"
+                  min="0"
+                />
+
+                <div class="invalid-feedback">
+                  Days since last bonus must be 0 or above.
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="activity-trend" class="form-label"
+                  >Activity Trend</label
+                >
+                <select id="activity-trend" class="form-select">
+                  <option value="">Select activity trend</option>
+                  <option value="increasing">Increasing</option>
+                  <option value="stable">Stable</option>
+                  <option value="decreasing">Decreasing</option>
+                  <option value="inactive">Inactive</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select an activity trend.
+                </div>
+              </div>
+
+              <div class="form-check mb-4">
+                <input type="checkbox" id="rg-risk" class="form-check-input" />
+                <label for="rg-risk" class="form-check-label">
+                  Responsible gambling risk indicator present
+                </label>
+              </div>
+
+              <button type="submit" class="btn submit-btn w-100">
+                Run VIP Review
+              </button>
+              <div id="success-message" class="success-message">
+                Player review completed and saved successfully.
+              </div>
+            </form>
+          </section>
+
+          <section class="panel">
+            <div class="section-heading">
+              <p class="eyebrow">Smart review</p>
+              <h3>Internal Recommendation</h3>
+            </div>
+
+            <div class="recommendation-container">
+              <div class="recommendation-item">
+                <span class="recommendation-label">Bonus Eligibility</span>
+                <span id="bonus-status" class="status-badge pending">
+                  Awaiting review
+                </span>
+              </div>
+
+              <div class="recommendation-item">
+                <span class="recommendation-label">Churn Risk</span>
+                <span id="churn-status" class="status-badge neutral">
+                  Not assessed
+                </span>
+              </div>
+
+              <div class="recommendation-item">
+                <span class="recommendation-label">Behaviour Segment</span>
+                <span id="segment-status" class="status-badge neutral">
+                  Unknown
+                </span>
+              </div>
+
+              <div class="recommendation-alert">
+                <h4>Recommended Action</h4>
+
+                <p id="recommendation-text">
+                  Complete the player review form and run the VIP review to
+                  generate personalised recommendations.
+                </p>
+              </div>
+
+              <div class="rg-warning">
+                <span>Responsible Gambling Status</span>
+
+                <p id="rg-status">
+                  No responsible gambling concerns identified.
+                </p>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <!-- Saved reviews section -->
+        <section class="panel saved-reviews-section">
+          <div class="section-heading">
+            <p class="eyebrow">Saved data</p>
+            <h3>Saved Player Reviews</h3>
+          </div>
+
+          <div class="saved-reviews-header">
+            <div class="review-filters">
+              <input
+                type="search"
+                id="search-player"
+                class="form-control"
+                placeholder="Search Player ID"
+              />
+
+              <select id="filter-tier" class="form-select">
+                <option value="">All VIP Tiers</option>
+                <option value="silver">Silver</option>
+                <option value="gold">Gold</option>
+                <option value="platinum">Platinum</option>
+                <option value="diamond">Diamond</option>
+              </select>
+
+              <select id="filter-churn" class="form-select">
+                <option value="">All Churn Risks</option>
+                <option value="High risk">High Risk</option>
+                <option value="Medium risk">Medium Risk</option>
+                <option value="Low risk">Low Risk</option>
+              </select>
+
+              <button id="clear-filters-btn" class="btn btn-outline-secondary">
+                Clear Filters
+              </button>
+            </div>
+
+            <button id="clear-reviews-btn" class="btn btn-outline-light">
+              Clear All
+            </button>
+          </div>
+
+          <div id="saved-reviews-container" class="saved-reviews-grid">
+            <p class="empty-state">No player reviews saved yet.</p>
+          </div>
+        </section>
       </div>
-
-      <nav class="sidebar-nav" aria-label="Main navigation">
-        <a href="index.html" class="nav-link active">Dashboard</a>
-        <a href="pages/profiles.html" class="nav-link">Profiles</a>
-        <a href="pages/analytics.html" class="nav-link">Analytics</a>
-      </nav>
-    </aside>
-
-    <!-- Main dashboard content -->
-    <div class="main-content">
-
-      <!-- Page header -->
-      <header class="page-header">
-        <div>
-          <p class="eyebrow">Internal staff tool</p>
-          <h2>VIP Bonus & Retention Review</h2>
-        </div>
-
-       <div class="header-actions">
-
-    <form id="global-search-form">
-
-        <input
-            type="search"
-            id="global-player-search"
-            class="form-control search-input"
-            placeholder="Search player ID">
-
-            <div id="search-error-message" class="search-error-message">
-    Player not found.
-</div>
-
-    </form>
-
-    <div class="profile-badge">AK</div>
-
-</div>
-      </header>
-
-      <!-- Statistics summary cards -->
-      <section class="stats-section" aria-label="Dashboard summary">
-       <article class="stat-card">
-    <p>Active VIPs</p>
-    <h3 id="active-vips-count">0</h3>
-</article>
-
-        <article class="stat-card">
-    <p>Bonus Reviews</p>
-    <h3 id="bonus-reviews-count">0</h3>
-</article>
-
-<article class="stat-card">
-    <p>Churn Alerts</p>
-    <h3 id="churn-alerts-count">0</h3>
-</article>
-
-        <article class="stat-card">
-    <p>RG Reviews</p>
-    <h3 id="rg-reviews-count">0</h3>
-</article>
-      </section>
-
-      <!-- Review form and recommendation area -->
-      <main class="dashboard-main">
-        <section class="panel">
-          <div class="section-heading">
-            <p class="eyebrow">Manual input</p>
-            <h3>Player Review Form</h3>
-          </div>
-
-      <form id="player-review-form" class="player-form" novalidate>
-  <div class="mb-3">
-    <label for="player-id" class="form-label">Player ID</label>
-    <input type="text" id="player-id" class="form-control" placeholder="e.g. player_247">
-    <div class="invalid-feedback">Player ID is required.</div>
-  </div>
-
-  <div class="mb-3">
-    <label for="vip-tier" class="form-label">VIP Tier</label>
-    <select id="vip-tier" class="form-select">
-      <option value="">Select VIP tier</option>
-      <option value="silver">Silver</option>
-      <option value="gold">Gold</option>
-      <option value="platinum">Platinum</option>
-      <option value="diamond">Diamond</option>
-    </select>
-    <div class="invalid-feedback">Please select a VIP tier.</div>
-  </div>
-
-  <div class="mb-3">
-    <label for="total-deposit" class="form-label">Total Deposit (£)</label>
-    <input type="number" id="total-deposit" class="form-control" placeholder="e.g. 4500" min="0">
-    <div class="invalid-feedback">Total deposit must be 0 or above.</div>
-  </div>
-
-  <div class="mb-3">
-    <label for="wagering-completion" class="form-label">Wagering Completion (%)</label>
-    <input type="number" id="wagering-completion" class="form-control" placeholder="0 - 100" min="0" max="100">
-    <div class="invalid-feedback">Wagering completion must be between 0 and 100.</div>
-  </div>
-
-  <div class="mb-3">
-    <label for="last-active-days" class="form-label">Days Since Last Activity</label>
-    <input type="number" id="last-active-days" class="form-control" placeholder="e.g. 14" min="0">
-    <div class="invalid-feedback">Days since last activity must be 0 or above.</div>
-  </div>
-
-  <div class="mb-3">
-    <label for="last-bonus-days" class="form-label">
-        Days Since Last Bonus
-    </label>
-
-    <input
-        type="number"
-        id="last-bonus-days"
-        class="form-control"
-        placeholder="e.g. 30"
-        min="0">
-
-    <div class="invalid-feedback">
-        Days since last bonus must be 0 or above.
-    </div>
-</div>
-
-  <div class="mb-3">
-    <label for="activity-trend" class="form-label">Activity Trend</label>
-    <select id="activity-trend" class="form-select">
-      <option value="">Select activity trend</option>
-      <option value="increasing">Increasing</option>
-      <option value="stable">Stable</option>
-      <option value="decreasing">Decreasing</option>
-      <option value="inactive">Inactive</option>
-    </select>
-    <div class="invalid-feedback">Please select an activity trend.</div>
-  </div>
-
-  <div class="form-check mb-4">
-    <input type="checkbox" id="rg-risk" class="form-check-input">
-    <label for="rg-risk" class="form-check-label">
-      Responsible gambling risk indicator present
-    </label>
-  </div>
-
-  <button type="submit" class="btn submit-btn w-100">
-    Run VIP Review
-  </button>
-  <div id="success-message" class="success-message">
-    Player review completed and saved successfully.
-</div>
-</form>
-        </section>
-
-        <section class="panel">
-          <div class="section-heading">
-            <p class="eyebrow">Smart review</p>
-            <h3>Internal Recommendation</h3>
-          </div>
-
-          <div class="recommendation-container">
-
-  <div class="recommendation-item">
-    <span class="recommendation-label">Bonus Eligibility</span>
-    <span id="bonus-status" class="status-badge pending">
-      Awaiting review
-    </span>
-  </div>
-
-  <div class="recommendation-item">
-    <span class="recommendation-label">Churn Risk</span>
-    <span id="churn-status" class="status-badge neutral">
-      Not assessed
-    </span>
-  </div>
-
-  <div class="recommendation-item">
-    <span class="recommendation-label">Behaviour Segment</span>
-    <span id="segment-status" class="status-badge neutral">
-      Unknown
-    </span>
-  </div>
-
-  <div class="recommendation-alert">
-    <h4>Recommended Action</h4>
-
-    <p id="recommendation-text">
-      Complete the player review form and run the VIP review to generate personalised recommendations.
-    </p>
-  </div>
-
-  <div class="rg-warning">
-    <span>Responsible Gambling Status</span>
-
-    <p id="rg-status">
-      No responsible gambling concerns identified.
-    </p>
-  </div>
-
-</div>
-        </section>
-      </main>
-
-      <!-- Saved reviews section -->
-      <section class="panel saved-reviews-section">
-        <div class="section-heading">
-          <p class="eyebrow">Saved data</p>
-          <h3>Saved Player Reviews</h3>
-        </div>
-
-  <div class="saved-reviews-header">
-
-    <div class="review-filters">
-
-        <input
-            type="search"
-            id="search-player"
-            class="form-control"
-            placeholder="Search Player ID">
-
-        <select id="filter-tier" class="form-select">
-            <option value="">All VIP Tiers</option>
-            <option value="silver">Silver</option>
-            <option value="gold">Gold</option>
-            <option value="platinum">Platinum</option>
-            <option value="diamond">Diamond</option>
-        </select>
-
-        <select id="filter-churn" class="form-select">
-            <option value="">All Churn Risks</option>
-            <option value="High risk">High Risk</option>
-            <option value="Medium risk">Medium Risk</option>
-            <option value="Low risk">Low Risk</option>
-        </select>
-
-        <button id="clear-filters-btn" class="btn btn-outline-secondary">
-            Clear Filters
-        </button>
-
     </div>
 
-    <button id="clear-reviews-btn" class="btn btn-outline-light">
-        Clear All
-    </button>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-</div>
-
-<div id="saved-reviews-container" class="saved-reviews-grid">
-  <p class="empty-state">
-    No player reviews saved yet.
-  </p>
-</div>
-      </section>
-
-    </div>
-  </div>
-
-  <!-- Bootstrap JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Custom JavaScript -->
-  <script src="assets/js/app.js"></script>
-</body>
+    <!-- Custom JavaScript -->
+    <script src="assets/js/app.js"></script>
+  </body>
 </html>
