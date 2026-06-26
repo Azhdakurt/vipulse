@@ -491,12 +491,18 @@ function loadPlayerProfile() {
 
         profileTitle.textContent = "Player Profiles";
 
-        if (savedReviews.length === 0) {
-            profileContent.innerHTML = `
-                <p>No saved player profiles found.</p>
-            `;
-            return;
-        }
+     if (savedReviews.length === 0) {
+    profileContent.innerHTML = `
+        <div class="empty-state-card">
+            <h2>No player profiles found</h2>
+            <p>Create your first VIP review from the dashboard to start managing players.</p>
+            <a href="../index.html" class="btn submit-btn empty-state-btn">
+                Go to Dashboard
+            </a>
+        </div>
+    `;
+    return;
+}
 
         profileContent.innerHTML = `
             <div class="profile-grid">
