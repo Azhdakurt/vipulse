@@ -565,8 +565,11 @@ body {
 }
 
 .profile-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
   border-radius: 20px;
   padding: 1.5rem;
+  box-shadow: var(--shadow);
 
   display: flex;
   flex-direction: column;
@@ -589,6 +592,24 @@ body {
 
 .profile-card p:last-of-type {
   margin-bottom: 1.5rem;
+}
+
+.profile-card-detail {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.profile-card-detail span {
+    color: var(--text-secondary);
+    min-width: 120px;
+}
+
+.profile-card-detail strong {
+    color: var(--text-primary);
+    text-align: right;
 }
 
 /* =====================

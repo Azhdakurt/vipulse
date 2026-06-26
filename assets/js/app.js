@@ -497,33 +497,42 @@ document.addEventListener("DOMContentLoaded", () => {
                 ${savedReviews
                   .map(
                     (review) => `
-                    <article class="profile-card">
+                   <article class="profile-card">
 
-                        <h3>${review.playerId}</h3>
+    <h3>${review.playerId}</h3>
 
-                        <p><strong>VIP Tier:</strong> ${review.vipTier}</p>
+    <div class="profile-card-detail">
+        <span>VIP Tier</span>
+        <strong>${formatLabel(review.vipTier)}</strong>
+    </div>
 
-                        <p><strong>Churn Risk:</strong> ${review.churnStatus}</p>
+    <div class="profile-card-detail">
+        <span>Churn Risk</span>
+        <strong>${review.churnStatus}</strong>
+    </div>
 
-                        <p><strong>Bonus Status:</strong> ${review.bonusStatus}</p>
+    <div class="profile-card-detail">
+        <span>Bonus Status</span>
+        <strong>${review.bonusStatus}</strong>
+    </div>
 
-                       <div class="card-actions">
+    <div class="card-actions">
 
-    <a
-        href="profiles.html?player=${review.playerId}"
-        class="btn submit-btn view-profile-btn">
-        View Profile
-    </a>
+        <a
+            href="profiles.html?player=${review.playerId}"
+            class="btn submit-btn view-profile-btn">
+            View Profile
+        </a>
 
-    <a
-        href="customer-preview.html?player=${review.playerId}"
-        class="btn btn-outline-light customer-preview-btn">
-        Customer View
-    </a>
+        <a
+            href="customer-preview.html?player=${review.playerId}"
+            class="btn customer-preview-btn">
+            Customer View
+        </a>
 
-</div>
+    </div>
 
-                    </article>
+</article>
                 `,
                   )
                   .join("")}
