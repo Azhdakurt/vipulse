@@ -522,7 +522,7 @@ function loadPlayerProfile() {
     <a
         href="customer-preview.html?player=${review.playerId}"
         class="btn btn-outline-light customer-preview-btn">
-        Customer Preview
+        Customer View
     </a>
 
 </div>
