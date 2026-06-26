@@ -889,3 +889,40 @@ body {
     width: auto;
     min-width: 180px;
 }
+
+/* =====================
+   404 PAGE
+===================== */
+
+.error-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 3rem;
+    text-align: center;
+}
+
+.error-container h1 {
+    color: var(--accent-gold);
+    font-size: 5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.error-container h2 {
+    margin-bottom: 1rem;
+}
+
+.error-container p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.error-btn {
+    display: inline-block;
+    width: auto;
+    min-width: 200px;
+}
