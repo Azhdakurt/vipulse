@@ -405,12 +405,6 @@ body {
    SAVED REVIEWS
 ===================== */
 
-.saved-reviews-header {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 1.5rem;
-}
-
 .saved-reviews-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -455,17 +449,6 @@ body {
 /* =====================
    SEARCH & FILTERS
 ===================== */
-
-.review-filters {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.review-filters .form-control,
-.review-filters .form-select {
-    min-width: 180px;
-}
 
 .saved-reviews-header {
     display: flex;
@@ -566,7 +549,6 @@ body {
 }
 
 .profile-container {
-    background-color: var(--card-bg);
     border-radius: 24px;
     padding: 2rem;
 }
@@ -586,7 +568,6 @@ body {
 }
 
 .profile-card {
-    background-color: var(--card-bg);
     border-radius: 20px;
     padding: 1.5rem;
 
@@ -740,14 +721,14 @@ body {
    PROFILE ACTION BUTTONS
 ===================== */
 
-.card-actions {
+.profile-card .card-actions {
     display: flex;
     gap: 0.75rem;
     margin-top: 1.5rem;
     max-width: 360px;
 }
 
-.card-actions .btn {
+.profile-card .card-actions .btn {
     flex: 1;
     min-width: 0;
     padding: 0.8rem 0.6rem;
@@ -774,7 +755,7 @@ body {
 }
 
 @media (max-width: 576px) {
-    .card-actions {
+    .profile-card .card-actions {
         flex-direction: column;
     }
 }
