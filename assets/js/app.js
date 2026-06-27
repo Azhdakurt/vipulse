@@ -338,6 +338,15 @@ document.addEventListener("DOMContentLoaded", () => {
     element.className = `status-badge ${statusClass}`;
   }
 
+  // Capitalizes the first letter of a string
+  function capitalize(text) {
+    if (!text) {
+      return "";
+    }
+
+    return text.charAt(0).toUpperCase() + text.slice(1);
+  }
+
   // Creates saved review cards from the savedReviews array
   function renderSavedReviews() {
     const searchValue = searchPlayerInput.value.toLowerCase();
@@ -380,10 +389,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="behaviour-tags">
     ${getBehaviourTags(review)}
 </div>
-                <p><strong>VIP Tier:</strong> ${review.vipTier}</p>
+                <p><strong>VIP Tier:</strong> ${capitalize(review.vipTier)}</p>
                 <p><strong>Deposit:</strong> £${review.totalDeposit}</p>
                 <p><strong>Wagering:</strong> ${review.wageringCompletion}%</p>
-                <p><strong>Activity:</strong> ${review.activityTrend}</p>
+                <p><strong>Activity:</strong> ${capitalize(review.activityTrend)}</p>
                 <p><strong>Bonus:</strong> ${review.bonusStatus}</p>
                 <p><strong>Churn Risk:</strong> ${review.churnStatus}</p>
 
