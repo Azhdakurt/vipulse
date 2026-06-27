@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Saved reviews section elements
   const savedReviewsContainer = document.getElementById(
-    "saved-reviews-container",
+    "saved-reviews-container"
   );
   const clearReviewsButton = document.getElementById("clear-reviews-btn");
 
@@ -316,7 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
         JSON.parse(localStorage.getItem("vipulseReviews")) || [];
 
       const playerExists = savedReviews.some(
-        (review) => review.playerId === playerId,
+        (review) => review.playerId === playerId
       );
 
       if (playerExists) {
@@ -405,21 +405,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Players eligible for bonus review
     const bonusCount = savedReviews.filter(
-      (review) => review.bonusStatus === "Eligible for review",
+      (review) => review.bonusStatus === "Eligible for review"
     ).length;
 
     bonusReviewsCount.textContent = bonusCount;
 
     // Players with high churn risk
     const churnCount = savedReviews.filter(
-      (review) => review.churnStatus === "High risk",
+      (review) => review.churnStatus === "High risk"
     ).length;
 
     churnAlertsCount.textContent = churnCount;
 
     // Players requiring responsible gambling review
     const rgCount = savedReviews.filter(
-      (review) => review.segmentStatus === "RG Review",
+      (review) => review.segmentStatus === "RG Review"
     ).length;
 
     rgReviewsCount.textContent = rgCount;
@@ -533,7 +533,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
 
 </article>
-                `,
+                `
                   )
                   .join("")}
             </div>
@@ -591,15 +591,15 @@ document.addEventListener("DOMContentLoaded", () => {
     totalPlayers.textContent = savedReviews.length;
 
     bonusEligible.textContent = savedReviews.filter(
-      (review) => review.bonusStatus === "Eligible for review",
+      (review) => review.bonusStatus === "Eligible for review"
     ).length;
 
     highChurn.textContent = savedReviews.filter(
-      (review) => review.churnStatus === "High risk",
+      (review) => review.churnStatus === "High risk"
     ).length;
 
     rgReviews.textContent = savedReviews.filter(
-      (review) => review.segmentStatus === "RG Review",
+      (review) => review.segmentStatus === "RG Review"
     ).length;
 
     const tierCounts = countBy(savedReviews, "vipTier");
@@ -627,7 +627,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const playerId = params.get("player");
 
     const previewContainer = document.getElementById(
-      "customer-preview-content",
+      "customer-preview-content"
     );
 
     const savedReviews =
@@ -751,12 +751,15 @@ document.addEventListener("DOMContentLoaded", () => {
       return `<p class="empty-state">No analytics data available yet.</p>`;
     }
 
-    const sortedEntries =
-      preferredOrder.length > 0
-        ? preferredOrder
-            .filter((label) => data[label])
-            .map((label) => [label, data[label]])
-        : entries;
+    let sortedEntries;
+
+    if (preferredOrder.length > 0) {
+      sortedEntries = preferredOrder
+        .filter((label) => data[label])
+        .map((label) => [label, data[label]]);
+    } else {
+      sortedEntries = entries;
+    }
 
     return sortedEntries
       .map(
@@ -765,7 +768,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <span>${formatLabel(label)}</span>
             <strong>${count}</strong>
         </div>
-    `,
+    `
       )
       .join("");
   }
