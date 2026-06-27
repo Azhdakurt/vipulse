@@ -930,3 +930,28 @@ body {
   width: auto;
   min-width: 200px;
 }
+
+/* =====================
+   EXTRA SMALL DEVICES
+===================== */
+
+@media (max-width: 400px) {
+  .profile-page,
+  .secondary-page {
+    padding: 1.25rem;
+  }
+
+  .profile-container {
+    padding: 1rem;
+  }
+
+  .empty-state-card {
+    width: 100%;
+    padding: 1.5rem 1rem;
+  }
+
+  .empty-state-btn {
+    width: 100%;
+    min-width: 0;
+  }
+}
