@@ -315,6 +315,11 @@ body {
   border: none;
   padding: 0.9rem 1rem;
   border-radius: 12px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .submit-btn:hover {
