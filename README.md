@@ -23,7 +23,7 @@ The application was built using HTML, CSS and Vanilla JavaScript, with browser-b
 
 ---
 
-# Table of Contents
+## Table of Contents
 
 - [Project Goals](#project-goals)
 - [User Experience (UX)](#user-experience-ux)
@@ -120,7 +120,7 @@ Accent colours were used consistently throughout the application to highlight:
 
 ### Typography
 
-The application uses **Poppins** as its primary font to provide a clean, modern and highly readable interface across desktop, tablet and mobile devices.
+The application uses **Inter** as its primary font to provide a clean, modern and highly readable interface across desktop, tablet and mobile devices.
 
 ---
 
@@ -250,7 +250,7 @@ VIPulse has been designed as a multi-page web application that supports VIP acco
 
 ---
 
-## Dashboard
+### Dashboard
 
 ![Dashboard Overview](assets/documentation/screenshots/dashboard-overview.png)
 
@@ -307,7 +307,7 @@ Users can:
 
 ---
 
-## Profiles
+### Profiles
 
 ![Profiles Page](assets/documentation/screenshots/profiles-page.png)
 
@@ -349,7 +349,7 @@ This provides account managers with all relevant customer information in one pla
 
 ---
 
-## Customer Preview
+### Customer Preview
 
 ![Customer Preview](assets/documentation/screenshots/customer-preview.png)
 
@@ -369,7 +369,7 @@ This separation highlights the difference between internal operational tools and
 
 ---
 
-## Analytics
+### Analytics
 
 ![Analytics Dashboard](assets/documentation/screenshots/analytics-page.png)
 
@@ -388,7 +388,7 @@ Statistics are generated dynamically from Local Storage and update automatically
 
 ---
 
-## Custom 404 Page
+### Custom 404 Page
 
 ![Custom 404 Page](assets/documentation/screenshots/404-page.png)
 
@@ -425,6 +425,50 @@ These improvements would further enhance the application's scalability and bette
 
 ---
 
+## Technologies Used
+
+The following technologies and tools were used throughout the planning, development, testing and deployment of this project.
+
+### Languages
+
+- **HTML5** – Used to structure the application's content.
+- **CSS3** – Used to create the layout, styling and responsive design.
+- **JavaScript (ES6)** – Used to build the application's interactive functionality and business logic.
+
+---
+
+### Frameworks & Libraries
+
+- **Bootstrap 5** – Used for responsive layout, grid system and selected UI components.
+
+---
+
+### Development Tools
+
+- **Visual Studio Code** – Used as the primary code editor.
+- **Git** – Used for version control.
+- **GitHub** – Used to store the project repository and manage Agile development.
+- **GitHub Pages** – Used to deploy the live application.
+- **Chrome Developer Tools** – Used for debugging, responsive testing and performance analysis.
+
+---
+
+### Design
+
+- **ChatGPT** – Used to assist with project planning, mockup design, low-fidelity wireframes, documentation guidance and technical explanations.
+- **Google Fonts** – Used to provide consistent typography.
+
+---
+
+### Validation & Testing
+
+- **W3C HTML Validator** – Used to validate HTML.
+- **W3C CSS Validator** – Used to validate CSS.
+- **JSHint** – Used to validate JavaScript.
+- **Lighthouse** – Used to test performance, accessibility, best practices and SEO.
+
+---
+
 ## Testing
 
 Testing was carried out throughout the development process rather than being completed only at the end of the project. Each new feature was manually tested during development before being validated across different browsers, screen sizes and validation tools.
@@ -456,7 +500,7 @@ All completed functionality behaved as expected during testing.
 
 ---
 
-## Browser Compatibility
+### Browser Compatibility
 
 The application was tested across multiple modern desktop browsers to ensure consistent functionality and layout.
 
@@ -473,7 +517,7 @@ The application was tested across multiple modern desktop browsers to ensure con
 ![Browser Compatibility](assets/documentation/testing/browser-testing/safari-browser-testing.png)
 ---
 
-## Responsive Testing
+### Responsive Testing
 
 Responsive behaviour was tested using Chrome Developer Tools across multiple viewport sizes.
 
@@ -498,11 +542,11 @@ The dashboard layout, navigation, forms and interactive components remained full
 
 ---
 
-## Code Validation
+### Code Validation
 
 The completed project was validated using recognised industry validation tools.
 
-### HTML Validation
+#### HTML Validation
 
 Each HTML page was individually validated using the W3C HTML Validator.
 
@@ -526,7 +570,7 @@ The following pages were successfully validated without errors:
 
 ---
 
-### CSS Validation
+#### CSS Validation
 
 The project stylesheet was validated using the W3C CSS Validator.
 
@@ -536,7 +580,7 @@ No errors were identified.
 
 ---
 
-### JavaScript Validation
+#### JavaScript Validation
 
 JavaScript code was validated using JSHint.
 
@@ -546,7 +590,7 @@ Minor formatting warnings were resolved during development and no significant Ja
 
 ---
 
-## Lighthouse Testing
+### Lighthouse Testing
 
 Lighthouse testing was completed using the Desktop configuration within Chrome Developer Tools.
 
@@ -571,7 +615,7 @@ Minor Accessibility score reductions were caused by intentional colour contrast 
 
 ---
 
-## Bug Fixes
+### Bug Fixes
 
 Throughout development, several issues were identified through manual testing, validation and cross-browser testing. These issues were resolved before the final submission to improve the application's functionality, accessibility and overall user experience.
 
