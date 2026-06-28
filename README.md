@@ -654,7 +654,7 @@ To deploy the project:
 
 The live application can be accessed here:
 
-**Live Site:** https://YOUR-GITHUB-PAGES-LINK
+**Live Site:** https://azhdakurt.github.io/vipulse/
 
 ---
 
@@ -669,7 +669,7 @@ To clone this repository:
 5. Run the following command:
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/vipulse.git
+git clone https://github.com/Azhdakurt/vipulse.git
 ```
 
 ---
