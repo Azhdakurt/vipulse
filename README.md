@@ -701,7 +701,6 @@ The following resources were used throughout the planning and development of thi
 - MDN Web Docs
 - W3Schools
 - Google Fonts
-- Font Awesome
 
 ---
 
