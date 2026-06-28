@@ -128,7 +128,13 @@ The application uses **Poppins** as its primary font to provide a clean, modern 
 
 Initial low-fidelity wireframes were created during the planning phase to define the layout and user flow before development began.
 
-*(Dashboard, Profiles, Customer View and Analytics wireframes go here.)*
+![Dashboard Wireframe](assets/documentation/wireframes/dashboard-wireframe.png)
+
+![Profiles Wireframe](assets/documentation/wireframes/profiles-wireframe.png)
+
+![Customer View Wireframe](assets/documentation/wireframes/customer-view-wireframe.png)
+
+![Analytics Wireframe](assets/documentation/wireframes/analytics-wireframe.png)
 
 ---
 
@@ -136,7 +142,7 @@ Initial low-fidelity wireframes were created during the planning phase to define
 
 High-fidelity mockups were produced to visualise the intended user interface before implementation and ensure consistency throughout development.
 
-*(Mockup image goes here.)*
+![VIPulse Mockup](assets/documentation/mockups/vipulse-mockup.png)
 
 ---
 
@@ -171,7 +177,7 @@ GitHub Projects was used as a Kanban board to organise development into the foll
 
 The project board provided a clear overview of development progress and ensured that tasks remained organised throughout the project.
 
-*GitHub Project Board screenshot goes here.*
+![GitHub Project Board](assets/documentation/screenshots/github-project-board.png)
 
 ---
 
@@ -188,7 +194,7 @@ Each issue included:
 
 This approach ensured that every feature was clearly defined before implementation and could be tracked throughout development.
 
-*GitHub Issue screenshot goes here.*
+![GitHub Issues](assets/documentation/screenshots/github-issues.png)
 
 ---
 
@@ -238,7 +244,7 @@ One **Could Have** feature (**Customer VIP Progress**) was intentionally postpon
 
 ---
 
-# Features
+## Features
 
 VIPulse has been designed as a multi-page web application that supports VIP account managers throughout the player review process. Each page has a dedicated purpose within the workflow, allowing users to review player information, generate recommendations, manage saved reviews and analyse customer trends from a central dashboard.
 
@@ -246,7 +252,7 @@ VIPulse has been designed as a multi-page web application that supports VIP acco
 
 ## Dashboard
 
-*Dashboard Overview screenshot goes here.*
+![Dashboard Overview](assets/documentation/screenshots/dashboard-overview.png)
 
 The Dashboard serves as the central workspace of the application. It provides VIP account managers with an overview of player activity while allowing them to complete manual player reviews and instantly generate business recommendations.
 
@@ -269,7 +275,7 @@ The page combines dashboard statistics, player review forms, recommendation logi
 
 ### Recommendation Engine
 
-*Recommendation Panel screenshot goes here.*
+![Recommendation Engine](assets/documentation/screenshots/recommendation-panel.png)
 
 After a successful player review, JavaScript analyses the submitted information and generates personalised engagement recommendations based on player behaviour.
 
@@ -287,7 +293,7 @@ This allows VIP managers to make consistent and informed customer retention deci
 
 ### Saved Reviews
 
-*Saved Reviews screenshot goes here.*
+![Saved Reviews](assets/documentation/screenshots/saved-reviews.png)
 
 Player reviews are automatically stored using Local Storage, allowing information to remain available after refreshing the browser.
 
@@ -303,7 +309,7 @@ Users can:
 
 ## Profiles
 
-*Profiles screenshot goes here.*
+![Profiles Page](assets/documentation/screenshots/profiles-page.png)
 
 The Profiles page provides a searchable overview of all saved VIP player reviews. It enables account managers to quickly locate individual players and review previously submitted information without creating duplicate entries.
 
@@ -323,7 +329,7 @@ The page supports efficient customer management through built-in search and filt
 
 ### Individual Player Profile
 
-*Player Profile screenshot goes here.*
+![Player Profile](assets/documentation/screenshots/player-profile.png)
 
 Each player profile presents a complete overview of the selected VIP customer's review.
 
@@ -345,7 +351,7 @@ This provides account managers with all relevant customer information in one pla
 
 ## Customer Preview
 
-*Customer Preview screenshot goes here.*
+![Customer Preview](assets/documentation/screenshots/customer-preview.png)
 
 The Customer Preview page demonstrates how internal VIP review data could be presented from a customer-facing perspective.
 
@@ -365,7 +371,7 @@ This separation highlights the difference between internal operational tools and
 
 ## Analytics
 
-*Analytics screenshot goes here.*
+![Analytics Dashboard](assets/documentation/screenshots/analytics-page.png)
 
 The Analytics page provides a visual overview of saved player data, allowing VIP managers to identify trends and prioritise customer retention activities.
 
@@ -384,7 +390,7 @@ Statistics are generated dynamically from Local Storage and update automatically
 
 ## Custom 404 Page
 
-*404 screenshot goes here.*
+![Custom 404 Page](assets/documentation/screenshots/404-page.png)
 
 A custom 404 page was created to improve the user experience when navigating to unavailable pages.
 
@@ -397,3 +403,287 @@ Instead of displaying a generic browser error, users are presented with a brande
 - Clear error message.
 - Return to Dashboard button.
 - Responsive layout.
+
+---
+
+## Future Features
+
+Although the core objectives of the project were successfully completed, several additional features have been identified for future development.
+
+Potential future enhancements include:
+
+- Customer VIP Progress page, originally planned as a Could Have user story.
+- User authentication and secure login functionality.
+- Database integration to replace Local Storage with permanent data storage.
+- Interactive charts and graphical analytics.
+- Export player reviews as PDF or CSV files.
+- Integration with CRM or player management systems through external APIs.
+- Advanced filtering and sorting options for player reviews.
+- Email notification system for high-risk churn alerts.
+
+These improvements would further enhance the application's scalability and better simulate a real-world internal CRM platform used within the iGaming industry.
+
+---
+
+## Testing
+
+Testing was carried out throughout the development process rather than being completed only at the end of the project. Each new feature was manually tested during development before being validated across different browsers, screen sizes and validation tools.
+
+The testing process focused on ensuring that the application remained responsive, accessible and functionally consistent across all implemented features.
+
+---
+
+### Manual Testing
+
+Manual testing was performed continuously during development to verify that each user story functioned as expected.
+
+The following core functionality was tested:
+
+- Navigation between all pages.
+- Manual player review submission.
+- Form validation.
+- Recommendation generation.
+- Responsible Gambling override.
+- Dashboard statistics.
+- Local Storage persistence.
+- Search and filter functionality.
+- Player profile navigation.
+- Analytics calculations.
+- Customer Preview page.
+- Custom 404 page navigation.
+
+All completed functionality behaved as expected during testing.
+
+---
+
+## Browser Compatibility
+
+The application was tested across multiple modern desktop browsers to ensure consistent functionality and layout.
+
+| Browser | Result |
+|----------|--------|
+| Google Chrome | ✅ Passed |
+| Mozilla Firefox | ✅ Passed |
+| Safari | ✅ Passed |
+
+![Browser Compatibility](assets/documentation/testing/browser-testing/firefox-browser-testing.png)
+
+![Browser Compatibility](assets/documentation/testing/browser-testing/chrome-browser-testing.png)
+
+![Browser Compatibility](assets/documentation/testing/browser-testing/safari-browser-testing.png)
+---
+
+## Responsive Testing
+
+Responsive behaviour was tested using Chrome Developer Tools across multiple viewport sizes.
+
+The application remained fully responsive across:
+
+| Device | Result |
+|---------|--------|
+| Desktop | ✅ Passed |
+| iPad Air | ✅ Passed |
+| iPhone 14 Pro Max | ✅ Passed |
+| iPhone SE | ✅ Passed |
+
+The dashboard layout, navigation, forms and interactive components remained fully usable across all tested screen sizes.
+
+![Responsive Testing](assets/documentation/testing/responsive/desktop-responsive.png)
+
+![Responsive Testing](assets/documentation/testing/responsive/ipad-air-responsive.png)
+
+![Responsive Testing](assets/documentation/testing/responsive/iphone-se-responsive.png)
+
+![Responsive Testing](assets/documentation/testing/responsive/iphone-14-pro-max-responsive.png)
+
+---
+
+## Code Validation
+
+The completed project was validated using recognised industry validation tools.
+
+### HTML Validation
+
+Each HTML page was individually validated using the W3C HTML Validator.
+
+The following pages were successfully validated without errors:
+
+- Dashboard
+- Profiles
+- Customer View
+- Analytics
+- 404 Page
+
+![Dashboard HTML Validation](assets/documentation/testing/validation/dashboard-html-validation.png)
+
+![Profiles HTML Validation](assets/documentation/testing/validation/profiles-html-validation.png)
+
+![Customer Preview HTML Validation](assets/documentation/testing/validation/customer-view-html-validation.png)
+
+![Analytics HTML Validation](assets/documentation/testing/validation/analytics-html-validation.png)
+
+![404 HTML Validation](assets/documentation/testing/validation/404-html-validation.png)
+
+---
+
+### CSS Validation
+
+The project stylesheet was validated using the W3C CSS Validator.
+
+No errors were identified.
+
+![CSS Validation](assets/documentation/testing/validation/css-validation.png)
+
+---
+
+### JavaScript Validation
+
+JavaScript code was validated using JSHint.
+
+Minor formatting warnings were resolved during development and no significant JavaScript issues remained within the final submission.
+
+![JSHint Validation](assets/documentation/testing/validation/jshint-validaton.png)
+
+---
+
+## Lighthouse Testing
+
+Lighthouse testing was completed using the Desktop configuration within Chrome Developer Tools.
+
+The project achieved consistently high scores across all pages for:
+
+- Performance
+- Accessibility
+- Best Practices
+- SEO
+
+Minor Accessibility score reductions were caused by intentional colour contrast choices used to preserve the dashboard's visual hierarchy.
+
+![Dashboard Lighthouse](assets/documentation/testing/lighthouse/dashboard-lighthouse.png)
+
+![Profiles Lighthouse](assets/documentation/testing/lighthouse/profiles-lighthouse.png)
+
+![Customer Preview Lighthouse](assets/documentation/testing/lighthouse/customer-view-lighthouse.png)
+
+![Analytics Lighthouse](assets/documentation/testing/lighthouse/analytics-lighthouse.png)
+
+![404 Lighthouse](assets/documentation/testing/lighthouse/404-lighthouse.png)
+
+---
+
+## Bug Fixes
+
+Throughout development, several issues were identified through manual testing, validation and cross-browser testing. These issues were resolved before the final submission to improve the application's functionality, accessibility and overall user experience.
+
+Many of these improvements were identified following HTML and CSS validation, JSHint analysis, Lighthouse testing and cross-browser compatibility checks.
+
+| Issue Identified | Resolution |
+|------------------|------------|
+| 404 page styling not loading after deployment | Updated relative asset paths to ensure all assets loaded correctly when deployed to GitHub Pages. |
+| Return to Dashboard button not navigating correctly | Corrected the navigation path to ensure users could return to the Dashboard successfully. |
+| Accessibility warning for filter controls | Added accessible labels to filter controls to improve accessibility compliance. |
+| Missing page meta descriptions | Added unique meta descriptions to all HTML pages to improve SEO and Lighthouse scores. |
+| JSHint formatting warnings | Removed trailing whitespace and reformatted the JavaScript code to resolve formatting warnings. |
+| Saved Reviews not updating correctly | Updated the rendering logic to ensure saved reviews refreshed correctly after user actions. |
+
+These improvements contributed to a more stable, accessible and user-friendly application while ensuring successful validation and deployment before the final submission.
+
+---
+
+## Deployment
+
+### GitHub Pages
+
+The project was deployed using **GitHub Pages**.
+
+To deploy the project:
+
+1. Log in to GitHub and open the project repository.
+2. Navigate to **Settings**.
+3. Select **Pages** from the left-hand menu.
+4. Under **Build and deployment**, choose:
+   - **Source:** Deploy from a branch
+   - **Branch:** `main`
+   - **Folder:** `/ (root)`
+5. Click **Save**.
+6. After a few moments, GitHub generates a live deployment URL.
+
+The live application can be accessed here:
+
+**Live Site:** https://YOUR-GITHUB-PAGES-LINK
+
+---
+
+### Cloning the Repository
+
+To clone this repository:
+
+1. Open the repository on GitHub.
+2. Click the **Code** button.
+3. Copy the HTTPS URL.
+4. Open your preferred IDE.
+5. Run the following command:
+
+```bash
+git clone https://github.com/YOUR-USERNAME/vipulse.git
+```
+
+---
+
+### Forking the Repository
+
+To create your own copy of this repository:
+
+1. Log in to GitHub.
+2. Navigate to the repository.
+3. Click the **Fork** button located in the top-right corner.
+4. GitHub will create a copy of the repository in your own account.
+
+---
+
+## Credits
+
+### Content
+
+- All written content was created by the project author.
+
+---
+
+### Resources
+
+The following resources were used throughout the planning and development of this project:
+
+- Bootstrap 5 Documentation
+- MDN Web Docs
+- W3Schools
+- Google Fonts
+- Font Awesome
+
+---
+
+### AI Assistance
+
+ChatGPT was used throughout the project for:
+
+- Planning project structure.
+- Brainstorming feature ideas.
+- README documentation support.
+- Wireframe planning.
+- High-fidelity mockup planning.
+- General debugging guidance and code explanations.
+
+All implementation, testing, debugging and final project decisions were completed and verified by the project author.
+
+---
+
+## Acknowledgements
+
+I would like to thank:
+
+- My Code Institute facilitator and the Code Institute community for their guidance and learning resources.
+- My family for their encouragement and patience throughout the development of this project.
+- OpenAI's ChatGPT for providing planning support, documentation guidance and technical explanations throughout the project.
+
+---
+
+© 2026 VIPulse | Developed as part of the Code Institute Level 5 Diploma in Web Application Development.
