@@ -8,8 +8,8 @@
 
 | Description | Link |
 |------------|------|
-| Live Application | https://YOUR-GITHUB-PAGES-LINK |
-| GitHub Repository | https://github.com/YOUR-USERNAME/vipulse |
+| Live Application | [View Live Site](https://azhdakurt.github.io/vipulse/) |
+| GitHub Repository | [View Repository](https://github.com/Azhdakurt/vipulse) |
 
 ---
 
