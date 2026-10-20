@@ -64,13 +64,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Load existing saved reviews from localStorage, or start with an empty array
-  let savedReviews = JSON.parse(localStorage.getItem("vipulseReviews")) || [];
+let savedReviews = JSON.parse(localStorage.getItem("vipulseReviews")) || [];
 
-  // Show any previously saved reviews when the page loads
+// Show saved reviews and dashboard data only when dashboard elements exist
+if (savedReviewsContainer && searchPlayerInput) {
   renderSavedReviews();
   updateDashboardCards();
+}
 
   // Runs when the user submits the player review form
+  if (playerForm) {
   playerForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -249,10 +252,12 @@ document.addEventListener("DOMContentLoaded", () => {
     playerForm.reset();
 
     // Remove any previous validation styling
-    clearValidation();
+   clearValidation();
   });
+}
 
   // Handles deleting one saved review card
+  if (savedReviewsContainer) {
   savedReviewsContainer.addEventListener("click", (event) => {
     if (!event.target.classList.contains("delete-btn")) {
       return;
@@ -270,8 +275,10 @@ document.addEventListener("DOMContentLoaded", () => {
     renderSavedReviews();
     updateDashboardCards();
   });
+}
 
   // Handles clearing all saved reviews
+if (clearReviewsButton) {
   clearReviewsButton.addEventListener("click", () => {
     savedReviews = [];
 
@@ -282,17 +289,25 @@ document.addEventListener("DOMContentLoaded", () => {
     renderSavedReviews();
     updateDashboardCards();
   });
+}
 
-  // Updates saved review cards when the user types in the search field
+// Updates saved reviews when the user types in the search field
+if (searchPlayerInput) {
   searchPlayerInput.addEventListener("input", renderSavedReviews);
+}
 
-  // Updates saved review cards when the VIP tier filter changes
+// Updates saved reviews when the VIP tier filter changes
+if (filterTierInput) {
   filterTierInput.addEventListener("change", renderSavedReviews);
+}
 
-  // Updates saved review cards when the churn risk filter changes
+// Updates saved reviews when the churn risk filter changes
+if (filterChurnInput) {
   filterChurnInput.addEventListener("change", renderSavedReviews);
+}
 
-  // Clears all search and filter inputs
+// Clears all search and filter inputs
+if (clearFiltersButton && searchPlayerInput && filterTierInput && filterChurnInput) {
   clearFiltersButton.addEventListener("click", () => {
     searchPlayerInput.value = "";
     filterTierInput.value = "";
@@ -300,7 +315,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     renderSavedReviews();
   });
-
+}
   // Redirects users to a player profile using the global search bar
   if (globalSearchForm && globalPlayerSearch) {
     globalSearchForm.addEventListener("submit", (event) => {
@@ -348,10 +363,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Creates saved review cards from the savedReviews array
-  function renderSavedReviews() {
-    const searchValue = searchPlayerInput.value.toLowerCase();
-    const selectedTier = filterTierInput.value;
-    const selectedChurn = filterChurnInput.value;
+ function renderSavedReviews() {
+  if (
+    !savedReviewsContainer ||
+    !searchPlayerInput ||
+    !filterTierInput ||
+    !filterChurnInput
+  ) {
+    return;
+  }
+
+  const searchValue = searchPlayerInput.value.toLowerCase();
+  const selectedTier = filterTierInput.value;
+  const selectedChurn = filterChurnInput.value;
 
     // Filters saved reviews based on search text, VIP tier and churn risk
     const filteredReviews = savedReviews.filter((review) => {
