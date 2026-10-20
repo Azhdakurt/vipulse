@@ -477,6 +477,16 @@ The testing process focused on ensuring that the application remained responsive
 
 ---
 
+### Automated Testing
+
+Automated functional tests were not implemented as part of this project. Instead, manual testing was carried out throughout development to verify the application's functionality, usability and responsiveness.
+
+Code quality and performance were also assessed using JSHint, W3C HTML and CSS Validators, and Google Lighthouse. These tools provided automated analysis but were not used as a replacement for functional testing.
+
+Manual testing covered form validation, recommendation generation, Local Storage persistence, search and filtering, navigation, and responsive behaviour across different devices and browsers.
+
+---
+
 ### Manual Testing
 
 Manual testing was performed continuously during development to verify that each user story functioned as expected.
